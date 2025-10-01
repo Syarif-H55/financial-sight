@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FINSIGHT - Analytics</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/analytics.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="../assets/js/analytics.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>FINSIGHT</h1>
+    <div class="profile">Demo User</div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="transaction.html">Transactions</a>
+        <a href="goals.html">Goals</a>
+        <a class="active" href="analytics.html">Analytics</a>
+      </nav>
+    </aside>
+    <main class="container">
+      <section class="card">
+        <div class="filters">
+          <label>Start: <input id="f-start" type="month"></label>
+          <label>End: <input id="f-end" type="month"></label>
+          <button id="f-apply">Apply</button>
+        </div>
+      </section>
+      <section class="grid-2">
+        <div class="card">
+          <h2>Tren Income vs Expenses</h2>
+          <canvas id="trendChart" height="180"></canvas>
+        </div>
+        <div class="card">
+          <h2>Kategori Terbesar (Bulan Terakhir)</h2>
+          <canvas id="topCatChart" height="180"></canvas>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Pengeluaran per Kategori per Bulan</h2>
+        <canvas id="catMonthChart" height="200"></canvas>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+
+

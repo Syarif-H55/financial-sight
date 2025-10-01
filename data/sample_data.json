@@ -1,0 +1,32 @@
+{
+  "transactions": [
+    {
+      "date": "2025-07-01",
+      "description": "Gaji",
+      "amount": 8000000,
+      "type": "income",
+      "category": "salary"
+    },
+    {
+      "date": "2025-07-03",
+      "description": "Makan siang",
+      "amount": 60000,
+      "type": "expense",
+      "category": "food"
+    },
+    {
+      "date": "2025-07-05",
+      "description": "Transportasi",
+      "amount": 30000,
+      "type": "expense",
+      "category": "transport"
+    },
+    {
+      "date": "2025-08-01",
+      "description": "Gaji",
+      "amount": 8000000,
+      "type": "income",
+      "category": "salary"
+    }
+  ]
+}

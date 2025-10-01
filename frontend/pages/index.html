@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FINSIGHT Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>FINSIGHT</h1>
+    <div class="profile">Demo User</div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav>
+        <a class="active" href="#dashboard" data-route>Dashboard</a>
+        <a href="transaction.html">Transactions</a>
+        <a href="goals.html">Goals</a>
+        <a href="analytics.html">Analytics</a>
+      </nav>
+    </aside>
+    <main class="container">
+      <!-- DASHBOARD PAGE -->
+      <section id="page-dashboard">
+      <section class="card">
+        <h2>Ringkasan</h2>
+        <div class="summary-grid">
+          <div class="stat"><span>Pendapatan</span><strong id="income">-</strong></div>
+          <div class="stat"><span>Pengeluaran</span><strong id="expenses">-</strong></div>
+          <div class="stat"><span>Skor Kesehatan</span><strong id="health-score">-</strong></div>
+          <div class="stat"><span>Status</span><strong id="health-status">-</strong></div>
+        </div>
+      </section>
+
+      <section class="grid-2">
+        <div class="card">
+          <h2>Pengeluaran per Kategori</h2>
+          <canvas id="categoryChart" height="160"></canvas>
+        </div>
+        <div class="card">
+          <h2>Tren Bulanan</h2>
+          <canvas id="trendChart" height="160"></canvas>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Rekomendasi AI</h2>
+        <ul id="reco-list"></ul>
+      </section>
+      </section>
+
+      
+    </main>
+  </div>
+</body>
+</html>
+
+

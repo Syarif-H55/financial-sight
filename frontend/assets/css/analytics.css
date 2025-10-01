@@ -1,0 +1,3 @@
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.filters select { padding: 8px 10px; border: 1px solid #e5e7eb; border-radius: 8px; }
+

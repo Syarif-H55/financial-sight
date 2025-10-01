@@ -1,0 +1,8 @@
+{
+  "goals": [
+    { "name": "Dana Darurat", "target": 6000000, "current": 2000000, "deadline": null },
+    { "name": "Beli Laptop", "target": 8000000, "current": 1500000, "deadline": "2025-12-31" }
+  ]
+}
+
+

@@ -1,0 +1,15 @@
+.goal-form { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 8px; }
+.goal-card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px; background: #fff; display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.goal-title { font-weight: 600; }
+.goal-meta { color: #475569; font-size: 14px; }
+.progress { height: 10px; background: #eef2ff; border-radius: 9999px; overflow: hidden; }
+.progress > span { display: block; height: 100%; background: #2563eb; }
+.goal-actions { display: flex; gap: 8px; align-items: center; }
+.goal-actions input { width: 120px; padding: 6px 8px; border: 1px solid #e5e7eb; border-radius: 6px; }
+.goals-list { display: grid; gap: 10px; }
+
+@media (max-width: 720px) {
+  .goal-form { grid-template-columns: 1fr; }
+}
+
+

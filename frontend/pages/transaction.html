@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FINSIGHT - Transactions</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/transactions.css" />
+  <script defer src="../assets/js/transactions.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>FINSIGHT</h1>
+    <div class="profile">Demo User</div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav>
+        <a href="index.html">Dashboard</a>
+        <a class="active" href="transaction.html">Transactions</a>
+        <a href="goals.html">Goals</a>
+        <a href="analytics.html">Analytics</a>
+      </nav>
+    </aside>
+    <main class="container">
+    <section class="card">
+      <h2>Transactions</h2>
+      <div class="filters">
+        <input id="f-search" placeholder="Cari deskripsi..." />
+        <select id="f-type">
+          <option value="">Semua jenis</option>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+        <select id="f-category">
+          <option value="">Semua kategori</option>
+        </select>
+        <select id="f-sort">
+          <option value="date-desc">Tanggal ↓</option>
+          <option value="date-asc">Tanggal ↑</option>
+          <option value="amount-desc">Jumlah ↓</option>
+          <option value="amount-asc">Jumlah ↑</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="table-actions">
+        <div class="pagination">
+          <button id="pg-prev">Prev</button>
+          <span id="pg-info">Page 1</span>
+          <button id="pg-next">Next</button>
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr><th>Tanggal</th><th>Deskripsi</th><th>Kategori</th><th>Jenis</th><th>Jumlah</th><th></th></tr>
+          </thead>
+          <tbody id="tx2-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Tambah Transaksi</h2>
+      <form id="tx-form">
+        <div class="form-grid">
+          <input required id="i-date" type="date" />
+          <input required id="i-desc" placeholder="Deskripsi" />
+          <input required id="i-amount" type="number" placeholder="Jumlah (IDR)" />
+          <select required id="i-type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+          <input required id="i-category" placeholder="Kategori (mis. food)" />
+        </div>
+        <button type="submit">Simpan</button>
+      </form>
+    </section>
+    </main>
+  </div>
+</body>
+</html>
+
+
