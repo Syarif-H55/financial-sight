@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FINSIGHT - Budgets</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/goals.css" />
+  <script defer src="../assets/js/budgets.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>FINSIGHT</h1>
+    <div class="profile">Demo User</div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="transaction.html">Transactions</a>
+        <a href="goals.html">Goals</a>
+        <a href="analytics.html">Analytics</a>
+        <a class="active" href="budgets.html">Budgets</a>
+      </nav>
+    </aside>
+    <main class="container">
+      <section class="card">
+        <h2>Atur Anggaran</h2>
+        <form id="budget-form">
+          <div class="form-group">
+            <label for="category">Kategori</label>
+            <select id="category" required>
+              <option value="food">Makanan</option>
+              <option value="transport">Transportasi</option>
+              <option value="entertainment">Hiburan</option>
+              <option value="housing">Tempat Tinggal</option>
+              <option value="utilities">Utilitas</option>
+              <option value="healthcare">Kesehatan</option>
+              <option value="education">Pendidikan</option>
+              <option value="other">Lainnya</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="amount">Jumlah (Rp)</label>
+            <input type="number" id="amount" required>
+          </div>
+          <div class="form-group">
+            <label for="month">Bulan</label>
+            <input type="month" id="month" required>
+          </div>
+          <button type="submit">Tambah Anggaran</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Daftar Anggaran</h2>
+        <div id="budgets-list">
+          <!-- Budgets will be loaded here -->
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

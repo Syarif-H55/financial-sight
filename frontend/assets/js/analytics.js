@@ -28,6 +28,7 @@ async function rerender() {
   await renderTrend();
   await renderTopCategories();
   await renderCategoryByMonth();
+  await renderBudgetActual();
 }
 
 async function renderTrend() {
@@ -79,6 +80,81 @@ async function renderCategoryByMonth() {
 function palette(i) {
   const colors = ['#2563eb', '#059669', '#d97706', '#dc2626', '#7c3aed', '#0ea5e9', '#16a34a'];
   return colors[i % colors.length];
+}
+
+async function renderBudgetActual() {
+  const data = await fetchJSON('/api/analytics/budget-vs-actual');
+  const ctx = document.getElementById('budgetActualChart');
+  
+  // Prepare datasets for budget and actual values
+  const months = data.months;
+  const categories = data.categories;
+  const chartData = data.data;
+  
+  // Create datasets for each category (budget and actual)
+  let datasets = [];
+  let colorIdx = 0;
+  
+  for (const category of categories) {
+    // Budget dataset
+    datasets.push({
+      label: `${category} (Budget)`,
+      data: chartData[category]?.budget || [],
+      borderColor: palette(colorIdx),
+      backgroundColor: palette(colorIdx) + '33',
+      type: 'line',
+      yAxisID: 'y'
+    });
+    
+    // Actual dataset
+    datasets.push({
+      label: `${category} (Actual)`,
+      data: chartData[category]?.actual || [],
+      borderColor: palette(colorIdx + 1),
+      backgroundColor: palette(colorIdx + 1) + '88',
+      type: 'bar',
+      yAxisID: 'y'
+    });
+    
+    colorIdx += 2;
+  }
+  
+  new Chart(ctx, {
+    type: 'bar', // Use bar as base, but add line datasets for budget
+    data: {
+      labels: months,
+      datasets: datasets
+    },
+    options: {
+      plugins: { 
+        legend: { position: 'bottom' },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              let label = context.dataset.label || '';
+              if (label) {
+                label += ': ';
+              }
+              if (context.parsed.y !== null) {
+                label += new Intl.NumberFormat('id-ID', { 
+                  style: 'currency', 
+                  currency: 'IDR' 
+                }).format(context.parsed.y);
+              }
+              return label;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          type: 'linear',
+          display: true,
+          position: 'left',
+        }
+      }
+    }
+  });
 }
 
 window.addEventListener('DOMContentLoaded', initAnalytics);

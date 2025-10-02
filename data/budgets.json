@@ -1,0 +1,10 @@
+{
+  "budgets": [
+    { "category": "food", "amount": 1000000, "month": "2025-07" },
+    { "category": "transport", "amount": 500000, "month": "2025-07" },
+    { "category": "entertainment", "amount": 300000, "month": "2025-07" },
+    { "category": "food", "amount": 1200000, "month": "2025-08" },
+    { "category": "transport", "amount": 400000, "month": "2025-08" },
+    { "category": "entertainment", "amount": 500000, "month": "2025-08" }
+  ]
+}

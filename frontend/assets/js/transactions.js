@@ -19,7 +19,7 @@ const PAGE_SIZE = 10;
 
 async function init() {
   const data = await fetchJSON('/api/transactions');
-  allTx = (data.transactions || []).map((t, i) => ({...t, __index: i}));
+  allTx = (data.transactions || []); // Store the full transaction data including IDs
   populateCategoryFilter(allTx);
   wireEvents();
   applyFilters();
@@ -94,7 +94,7 @@ function renderTable() {
       <td>${t.category || ''}</td>
       <td>${t.type || ''}</td>
       <td>${formatCurrency(t.amount || 0)}</td>
-      <td><button data-del="${t.__index}">Hapus</button></td>
+      <td><button data-del="${t.id}">Hapus</button></td>
     `;
     tbody.appendChild(tr);
   });
@@ -102,7 +102,7 @@ function renderTable() {
   tbody.querySelectorAll('button[data-del]').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const index = e.target.getAttribute('data-del');
-      const res = await fetchJSON('/api/transactions', { method: 'DELETE', body: JSON.stringify({ index: Number(index) }) });
+      const res = await fetchJSON('/api/transactions', { method: 'DELETE', body: JSON.stringify({ id: Number(index) }) });
       if (res && res.status === 'ok') {
         await init();
       }

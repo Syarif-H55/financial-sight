@@ -39,7 +39,7 @@ async function renderGoals() {
   const list = document.getElementById('goals-list');
   list.innerHTML = '';
   const data = await fetchJSON('/api/goals');
-  (data.goals || []).forEach((g, idx) => {
+  (data.goals || []).forEach((g) => {
     const pct = g.target > 0 ? Math.min(100, Math.round((g.current / g.target) * 100)) : 0;
     const div = document.createElement('div');
     div.className = 'goal-card';
@@ -51,8 +51,8 @@ async function renderGoals() {
       </div>
       <div class="goal-actions">
         <input type="number" min="0" placeholder="Tambah (IDR)" data-add />
-        <button data-add-btn="${idx}">Update</button>
-        <button data-del-btn="${idx}">Hapus</button>
+        <button data-add-btn="${g.id}">Update</button>
+        <button data-del-btn="${g.id}">Hapus</button>
       </div>
     `;
     list.appendChild(div);
@@ -60,19 +60,19 @@ async function renderGoals() {
 
   list.querySelectorAll('[data-add-btn]').forEach(btn => {
     btn.addEventListener('click', async (e) => {
-      const idx = Number(e.target.getAttribute('data-add-btn'));
+      const goal_id = Number(e.target.getAttribute('data-add-btn'));
       const input = e.target.closest('.goal-card').querySelector('[data-add]');
       const inc = Number(input.value || 0);
       if (inc <= 0) return;
-      const res = await fetchJSON('/api/goals', { method: 'PATCH', body: JSON.stringify({ index: idx, increment: inc }) });
+      const res = await fetchJSON('/api/goals', { method: 'PATCH', body: JSON.stringify({ id: goal_id, increment: inc }) });
       if (res && res.status === 'ok') await renderGoals();
     });
   });
 
   list.querySelectorAll('[data-del-btn]').forEach(btn => {
     btn.addEventListener('click', async (e) => {
-      const idx = Number(e.target.getAttribute('data-del-btn'));
-      const res = await fetchJSON('/api/goals', { method: 'DELETE', body: JSON.stringify({ index: idx }) });
+      const goal_id = Number(e.target.getAttribute('data-del-btn'));
+      const res = await fetchJSON('/api/goals', { method: 'DELETE', body: JSON.stringify({ id: goal_id }) });
       if (res && res.status === 'ok') await renderGoals();
     });
   });
